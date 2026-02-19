@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Випадкова записка - Unsaid</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Навігація -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">Unsaid</a>
+            <ul class="nav-menu">
+                <li><a href="index.html">Головна</a></li>
+                <li><a href="create-note.html">Написати</a></li>
+                <li><a href="search.html">Пошук</a></li>
+                <li><a href="random-note.html">Випадкова</a></li>
+                <li><a href="archives.html">Архів</a></li>
+                <li><a href="about.html">Про проєкт</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Сторінка випадкової записки -->
+    <main class="random-note-page">
+        <div class="random-container">
+            <h1>Випадкова записка</h1>
+            <p class="subtitle">Прочитай записку від тої людини, без імені, але з великою душею</p>
+
+            <!-- Дисплей записки -->
+            <div class="note-display">
+                <div class="note-card-large">
+                    <div class="note-header">
+                        <h2>Для: <span id="recipientName">Максим</span></h2>
+                        <span class="note-category" id="noteCategory">МОТИВАЦІЯ</span>
+                    </div>
+
+                    <div class="note-content">
+                        <p id="noteContent">Я знаю, що останнім часом тобі складно. Але хочу, щоб ти знав - ти сильніший, ніж думаєш. Кожен день, коли ти встаєш з ліжка, ти надаєш опір. Це вже вибір. Це вже сила. Не здавайся.</p>
+                    </div>
+
+                    <div class="note-footer">
+                        <span class="note-date" id="noteDate">2 години тому</span>
+                        <span class="note-category-badge">ОСОБИСТЕ</span>
+                    </div>
+                </div>
+
+                <!-- Реакції -->
+                <div class="reactions">
+                    <button class="reaction-btn" data-reaction="heart">Сподоба (<span id="heartCount">12</span>)</button>
+                    <button class="reaction-btn" data-reaction="laugh">Прикол (<span id="laughCount">2</span>)</button>
+                    <button class="reaction-btn" data-reaction="sad">Сумно (<span id="sadCount">1</span>)</button>
+                    <button class="reaction-btn" data-reaction="inspire">Натхнення (<span id="fireCount">5</span>)</button>
+                </div>
+            </div>
+
+            <!-- Кнопки навігації -->
+            <div class="navigation-buttons">
+                <button id="prevBtn" class="btn-secondary">Попередня</button>
+                <button id="nextBtn" class="btn-primary">Наступна записка</button>
+            </div>
+
+            <!-- Статистика -->
+            <section class="random-stats">
+                <h3>Поточна записка</h3>
+                <div class="stat-row">
+                    <span>Всього реакцій:</span>
+                    <strong>20</strong>
+                </div>
+                <div class="stat-row">
+                    <span>Опублікована:</span>
+                    <strong>2 години тому</strong>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Футер -->
+    <footer class="footer">
+        <p>&copy; 2026 Unsaid. Усі права захищені.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
