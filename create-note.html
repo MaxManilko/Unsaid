@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="uk">
 <head>
@@ -42,12 +41,25 @@
                     <small>Вкажи точне ім'я, щоб людина змогла знайти свої записки</small>
                 </div>
 
+                <div class="form-group">
+                    <label for="category">Категорія записки</label>
+                    <select id="category" required>
+                        <option value="">Вибери категорію</option>
+                        <option value="love">Любов</option>
+                        <option value="friendship">Дружба</option>
+                        <option value="work">Робота</option>
+                        <option value="support">Підтримка</option>
+                        <option value="gratitude">Подяка</option>
+                        <option value="motivation">Мотивація</option>
+                        <option value="other">Інше</option>
+                    </select>
+                </div>
 
                 <div class="form-group">
                     <label for="noteText">Твоя записка *</label>
                     <textarea 
                         id="noteText" 
-                        placeholder="Напиши те, що ти хочеш сказати"
+                        placeholder="Напиши те, що ти хочеш сказати. Великі або малі слова — не важливо. Важливо те, що ти відчуваєш..."
                         rows="10"
                         maxlength="1000"
                         required
@@ -58,17 +70,30 @@
                 <div class="form-group form-group-checkbox">
                     <label>
                         <input type="checkbox" id="anonymous" checked>
-                        Залишити записку анонімною
+                        Залишити записку анонімною (рекомендується)
                     </label>
+                    <small>Якщо ти залишиш цей чекбокс, людина не дізнається, хто написав записку</small>
                 </div>
 
                 <button type="submit" class="btn-primary btn-large">Опублікувати записку</button>
             </form>
 
+            <section class="tips">
+                <h3>Поради для хорошої записки:</h3>
+                <ul>
+                    <li>Будь щирим і чесним зі своїми почуттями</li>
+                    <li>Напиши те, що тебе справді хвилює</li>
+                    <li>Не бійся показати свою уразливість</li>
+                    <li>Прочитай записку перед відправкою</li>
+                </ul>
+            </section>
         </div>
     </main>
 
-    
+    <!-- Футер -->
+    <footer class="footer">
+        <p>&copy; 2026 Unsaid. Усі права захищені.</p>
+    </footer>
 
     <script src="script.js"></script>
 </body>
