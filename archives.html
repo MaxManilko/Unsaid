@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Архів записок - Unsaid</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body>
     <!-- Навігація -->
@@ -36,24 +36,12 @@
                     <option value="popular">За популярністю</option>
                     <option value="loved">За кількістю реакцій</option>
                 </select>
-
-                <select id="filterCategory" class="filter-select">
-                    <option value="">Всі категорії</option>
-                    <option value="love">Любов</option>
-                    <option value="friendship">Дружба</option>
-                    <option value="work">Робота</option>
-                    <option value="support">Підтримка</option>
-                    <option value="gratitude">Подяка</option>
-                    <option value="motivation">Мотивація</option>
-                    <option value="other">Інше</option>
-                </select>
             </div>
 
             <!-- Список всіх записок -->
             <div class="archives-list">
                 <div class="archive-item">
                     <h3>Для: Марія</h3>
-                    <span class="category-tag">ЛЮБОВ</span>
                     <p>Я розумію, що останнім часом між нами багато змін. Але хочу, щоб ти знала - ти для мене один з найважливіших людей у світі. Спасибі за все, що ти робиш.</p>
                     <div class="item-meta">
                         <span class="date">2 години тому</span>
@@ -66,7 +54,6 @@
 
                 <div class="archive-item">
                     <h3>Для: Іван</h3>
-                    <span class="category-tag">ДРУЖБА</span>
                     <p>Ти був для мене найкращим другом у найскладніших моментах. Не кожна людина має людину, на яку можна покластися. А я такого мав - це ти. Спасибі.</p>
                     <div class="item-meta">
                         <span class="date">5 годин тому</span>
@@ -79,7 +66,6 @@
 
                 <div class="archive-item">
                     <h3>Для: Анна</h3>
-                    <span class="category-tag">РОБОТА</span>
                     <p>Твоя работа справляє враження навіть коли ти цього не очікуєш. Я помітив, скільки часу ти вкладаєш у кожний проєкт. Це світиться в результатах. Молодець!</p>
                     <div class="item-meta">
                         <span class="date">1 день тому</span>
@@ -92,7 +78,6 @@
 
                 <div class="archive-item">
                     <h3>Для: Петро</h3>
-                    <span class="category-tag">ПОДЯКА</span>
                     <p>Дякую за те, що поділився зі мною своїм досвідом та мудрістю. Це мені дійсно допомогло розібратися в собі та зрозуміти багато речей.</p>
                     <div class="item-meta">
                         <span class="date">2 дні тому</span>
@@ -105,7 +90,6 @@
 
                 <div class="archive-item">
                     <h3>Для: Олена</h3>
-                    <span class="category-tag">ПІДТРИМКА</span>
                     <p>Сподіваюсь, ти розумієш, як багато ти значиш для своєї команди. Когда тебе не буває, все відчувають твою відсутність. Терпіння, ти скоро повернешся!</p>
                     <div class="item-meta">
                         <span class="date">3 дні тому</span>
@@ -118,7 +102,6 @@
 
                 <div class="archive-item">
                     <h3>Для: Максим</h3>
-                    <span class="category-tag">МОТИВАЦІЯ</span>
                     <p>Я знаю, що зараз тобі важко. Але те, що ти не здаєшся - це вже мужність. Кожен день боротьби - це перемога. Продовжуй. Світ чекає на тебе.</p>
                     <div class="item-meta">
                         <span class="date">4 дні тому</span>
@@ -139,10 +122,7 @@
         </div>
     </main>
 
-    <!-- Футер -->
-    <footer class="footer">
-        <p>&copy; 2026 Unsaid. Усі права захищені.</p>
-    </footer>
+    
 
     <script src="script.js"></script>
 </body>

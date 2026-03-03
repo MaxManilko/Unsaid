@@ -1,0 +1,68 @@
+body {
+    margin: 0;
+    font-family: "Segoe UI", Tahoma, sans-serif;
+    background-color: #e2ecff;
+    color: #1f2a44;
+}
+
+.navbar {
+    background-color: #0f4c81;
+    padding: 14px 24px;
+}
+
+.nav-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.logo {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 28px;
+    font-weight: 700;   
+}
+
+.nav-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 8px;
+}
+
+.nav-menu li a {
+    display: block;
+    text-decoration: none;
+    color: #ffffff;
+    padding: 10px 14px;
+    border-radius: 8px;
+    transition: background-color 0.25s ease;
+}
+
+.nav-menu li a:hover {
+    background-color: #0e538c;
+}
+
+.nav-menu li a:active {
+    background-color: #0a3558;
+}
+
+.note-form-section,
+.list-section,
+.table-section,
+.media-section,
+.notes-display-section {
+    max-width: 1100px;
+    margin: 18px auto;
+    padding: 18px;
+    background-color: #ffffff;
+    border-radius: 10px;
+}
+
+.activity-list {
+    list-style-type: none;
+}
