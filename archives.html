@@ -2,128 +2,15 @@
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="0; url=index.html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Архів записок - Unsaid</title>
+    <title>Archive | Unsaid</title>
     <link rel="stylesheet" href="styles/styles.css">
 </head>
-<body>
-    <!-- Навігація -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="index.html" class="logo">Unsaid</a>
-            <ul class="nav-menu">
-                <li><a href="index.html">Головна</a></li>
-                <li><a href="create-note.html">Написати</a></li>
-                <li><a href="search.html">Пошук</a></li>
-                <li><a href="random-note.html">Випадкова</a></li>
-                <li><a href="archives.html">Архів</a></li>
-                <li><a href="about.html">Про проєкт</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <!-- Сторінка архіву -->
-    <main class="archives-page">
-        <div class="archives-container">
-            <h1>Архів записок</h1>
-            <p class="subtitle">Всі опубліковані записки на платформі</p>
-
-            <!-- Фільтри -->
-            <div class="filters">
-                <select id="sortBy" class="filter-select">
-                    <option value="newest">Найновіші спочатку</option>
-                    <option value="oldest">Найстаріші спочатку</option>
-                    <option value="popular">За популярністю</option>
-                    <option value="loved">За кількістю реакцій</option>
-                </select>
-            </div>
-
-            <!-- Список всіх записок -->
-            <div class="archives-list">
-                <div class="archive-item">
-                    <h3>Для: Марія</h3>
-                    <p>Я розумію, що останнім часом між нами багато змін. Але хочу, щоб ти знала - ти для мене один з найважливіших людей у світі. Спасибі за все, що ти робиш.</p>
-                    <div class="item-meta">
-                        <span class="date">2 години тому</span>
-                        <span class="reactions">Сподоба 25 | Прикол 5 | Сумно 2 | Натхнення 8</span>
-                    </div>
-                    <div class="item-actions">
-                        <button class="btn-like">Поділитися реакцією</button>
-                    </div>
-                </div>
-
-                <div class="archive-item">
-                    <h3>Для: Іван</h3>
-                    <p>Ти був для мене найкращим другом у найскладніших моментах. Не кожна людина має людину, на яку можна покластися. А я такого мав - це ти. Спасибі.</p>
-                    <div class="item-meta">
-                        <span class="date">5 годин тому</span>
-                        <span class="reactions">Сподоба 18 | Прикол 12 | Сумно 1 | Натхнення 3</span>
-                    </div>
-                    <div class="item-actions">
-                        <button class="btn-like">Поділитися реакцією</button>
-                    </div>
-                </div>
-
-                <div class="archive-item">
-                    <h3>Для: Анна</h3>
-                    <p>Твоя работа справляє враження навіть коли ти цього не очікуєш. Я помітив, скільки часу ти вкладаєш у кожний проєкт. Це світиться в результатах. Молодець!</p>
-                    <div class="item-meta">
-                        <span class="date">1 день тому</span>
-                        <span class="reactions">Сподоба 12 | Прикол 2 | Сумно 0 | Натхнення 1</span>
-                    </div>
-                    <div class="item-actions">
-                        <button class="btn-like">Поділитися реакцією</button>
-                    </div>
-                </div>
-
-                <div class="archive-item">
-                    <h3>Для: Петро</h3>
-                    <p>Дякую за те, що поділився зі мною своїм досвідом та мудрістю. Це мені дійсно допомогло розібратися в собі та зрозуміти багато речей.</p>
-                    <div class="item-meta">
-                        <span class="date">2 дні тому</span>
-                        <span class="reactions">Сподоба 9 | Прикол 0 | Сумно 1 | Натхнення 4</span>
-                    </div>
-                    <div class="item-actions">
-                        <button class="btn-like">Поділитися реакцією</button>
-                    </div>
-                </div>
-
-                <div class="archive-item">
-                    <h3>Для: Олена</h3>
-                    <p>Сподіваюсь, ти розумієш, як багато ти значиш для своєї команди. Когда тебе не буває, все відчувають твою відсутність. Терпіння, ти скоро повернешся!</p>
-                    <div class="item-meta">
-                        <span class="date">3 дні тому</span>
-                        <span class="reactions">Сподоба 15 | Прикол 1 | Сумно 0 | Натхнення 7</span>
-                    </div>
-                    <div class="item-actions">
-                        <button class="btn-like">Поділитися реакцією</button>
-                    </div>
-                </div>
-
-                <div class="archive-item">
-                    <h3>Для: Максим</h3>
-                    <p>Я знаю, що зараз тобі важко. Але те, що ти не здаєшся - це вже мужність. Кожен день боротьби - це перемога. Продовжуй. Світ чекає на тебе.</p>
-                    <div class="item-meta">
-                        <span class="date">4 дні тому</span>
-                        <span class="reactions">Сподоба 21 | Прикол 1 | Сумно 2 | Натхнення 10</span>
-                    </div>
-                    <div class="item-actions">
-                        <button class="btn-like">Поділитися реакцією</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Пагінація -->
-            <div class="pagination">
-                <button class="btn-secondary">Попередня сторінка</button>
-                <span class="page-info">Сторінка 1 із 25</span>
-                <button class="btn-secondary">Наступна сторінка</button>
-            </div>
-        </div>
+<body class="redirect-page">
+    <main class="redirect-card">
+        <p>Archive moved to the main page.</p>
+        <a href="index.html" class="btn-primary">Open Archive</a>
     </main>
-
-    
-
-    <script src="script.js"></script>
 </body>
 </html>

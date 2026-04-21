@@ -3,147 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Про проєкт - Unsaid</title>
+    <title>About | Unsaid</title>
     <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body>
-    <!-- Навігація -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="index.html" class="logo">Unsaid</a>
-            <ul class="nav-menu">
-                <li><a href="index.html">Головна</a></li>
-                <li><a href="create-note.html">Написати</a></li>
-                <li><a href="search.html">Пошук</a></li>
-                <li><a href="random-note.html">Випадкова</a></li>
-                <li><a href="archives.html">Архів</a></li>
-                <li><a href="about.html">Про проєкт</a></li>
+    <nav class="navbar archive-navbar">
+        <div class="nav-container archive-nav-container">
+            <a href="index.html" class="archive-logo" aria-label="Unsaid home">
+                <span class="archive-logo-title">UNSENT</span>
+                <span class="archive-logo-bottom">unsentproject</span>
+            </a>
+
+            <ul class="nav-menu archive-menu">
+                <li><a href="index.html">ARCHIVE</a></li>
+                <li><a href="terms.html">TERMS</a></li>
+                <li><a class="is-active" href="about.html">ABOUT</a></li>
+                <li><a href="news.html">NEWS</a></li>
+                <li><a href="contacts.html">CONTACT</a></li>
             </ul>
+
+            <a href="submit.html" class="btn-primary archive-submit">SUBMIT</a>
         </div>
     </nav>
 
-    <!-- Сторінка про проєкт -->
-    <main class="about-page">
-        <div class="about-container">
-            <h1>Про проєкт Unsaid</h1>
+    <main class="inner-page">
+        <section class="page-hero">
+            <p class="eyebrow">ABOUT THE PROJECT</p>
+            <h1>A public archive for private feelings</h1>
+            <p>Unsaid collects anonymous messages that people never sent. The visual language stays editorial, simple, and a little raw, so the words remain the center of attention.</p>
+        </section>
 
-            <!-- Історія проєкту -->
-            <section class="about-section">
-                <h2>Історія проєкту</h2>
-                <p>Unsaid було створено з однією простою, але потужною ідеєю: дати людям можливість висловити свої справжні почуття, емоції та думки, навіть якщо вони не можуть або не знають, як сказати це обличчям до обличчя.</p>
-                <p>Ідея виникла з простого спостереження: люди часто мають речі, які вони хочуть сказати близьким, друзям чи вже далеким людям, але не знають як чи коли це сказати. Так народилася платформа, де кожна людина може залишити свою записку у повній анонімності.</p>
-                <p>За кілька місяців проєкт виріс з простого експерименту у спільноту з тисячами активних користувачів, які щодня ділять свої почуття та думки через записки.</p>
-            </section>
+        <section class="content-grid">
+            <article class="content-card">
+                <h2>What this is</h2>
+                <p>Unsaid is a place for messages that mattered but were never delivered. Some are apologies, some are love letters, some are just one line that stayed in drafts for years.</p>
+            </article>
+            <article class="content-card">
+                <h2>Why people use it</h2>
+                <p>The archive gives shape to emotions that are hard to carry alone. Reading what others never said can feel strangely familiar and unexpectedly comforting.</p>
+            </article>
+            <article class="content-card">
+                <h2>How it works</h2>
+                <p>Write a message, keep it anonymous, add it to the archive, and let it exist without forcing a direct confrontation. The site turns silence into a readable record.</p>
+            </article>
+            <article class="content-card">
+                <h2>What we protect</h2>
+                <p>We focus on privacy, respectful moderation, and clarity. The project is designed to hold emotional writing without turning it into noise.</p>
+            </article>
+        </section>
 
-            <!-- Мета проєкту -->
-            <section class="about-section">
-                <h2>Наша мета</h2>
-                <ul>
-                    <li>Створити безпечний простір для висловлення справжніх почуттів без страху судження</li>
-                    <li>З'єднати людей через щирі анонімні повідомлення й підтримку</li>
-                    <li>Допомогти людям розібратися зі своїми емоціями та знайти утіху</li>
-                    <li>Побудувати позитивну, підтримуючу спільноту де люди можуть бути уразливими та щирими</li>
-                    <li>Показати, що люди турбуються про один одного, навіть якщо це не видно кожен день</li>
-                </ul>
-            </section>
-
-            <!-- Як це працює -->
-            <section class="about-section">
-                <h2>Як це працює?</h2>
-                <ol>
-                    <li>Перейди на сторінку "Написати записку"</li>
-                    <li>Вкажи ім'я людини, якій призначена записка</li>
-                    <li>Напиши те, що тебе справді хвилює, що ти хочеш сказати</li>
-                    <li>Натисни "Опублікувати" - записка буде опублікована анонімно</li>
-                    <li>Люди зможуть знайти записку через пошук за іменем або прочитати випадкову</li>
-                    <li>Вони можуть залишити реакцію на записку</li>
-                </ol>
-            </section>
-
-            <!-- Правила спільноти -->
-            <section class="about-section">
-                <h2>Правила спільноти</h2>
-                <div class="rules-list">
-                    <h3>Ми схвалюємо:</h3>
-                    <ul>
-                        <li>Щиру, оригінальну думку та почуття</li>
-                        <li>Повагу до інших людей і їхніх почуттів</li>
-                        <li>Позитивність, підтримку та наповідення енергію</li>
-                        <li>Творчість у висловленні своїх думок</li>
-                    </ul>
-                    
-                    <h3>Ми не терпимо:</h3>
-                    <ul>
-                        <li>Образливі, ненавісні або дискримінаційні повідомлення</li>
-                        <li>Розповсюдження приватної інформації про людей</li>
-                        <li>Спам, оманливі посилання або рекламу</li>
-                        <li>Погрози або насильницькі висловлювання</li>
-                        <li>Цькування або булінг будь-якої людини</li>
-                    </ul>
-                </div>
-            </section>
-
-            <!-- Розробники -->
-            <section class="about-section">
-                <h2>Про команду</h2>
-                <div class="developers">
-                    <div class="developer-card">
-                        <h3>Максим</h3>
-                        <p class="position">Lead Developer та засновник</p>
-                        <p>Розробник і людина, що стояла за ідеєю цього проєкту. Усім сердцем присвячений створенню безпечного простору для людей.</p>
-                    </div>
-                    <div class="developer-card">
-                        <h3>Спільнота</h3>
-                        <p class="position">Найімпортивніші люди</p>
-                        <p>Щовідня тисячі людей лишають записки, читають їх, ділять реакції. Ви - серце цього проєкту!</p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Контакти -->
-            <section class="about-section">
-                <h2>Контакти та зворотний зв'язок</h2>
-                <div class="contacts">
-                    <p><strong>Email:</strong> info@unsaid.com</p>
-                    <p><strong>GitHub:</strong> github.com/maksym/unsaid</p>
-                    <p><strong>Соціальні мережі:</strong> @unsaid_app</p>
-                    <p><strong>Проблему обнаружили?</strong> Напишіть нам, ми дійсно читаємо кожне повідомлення</p>
-                </div>
-            </section>
-
-            <!-- FAQ -->
-            <section class="about-section">
-                <h2>Часті питання</h2>
-                <div class="faq-item">
-                    <h4>Чи зберігаються мої дані?</h4>
-                    <p>Записки зберігаються на нашому сервері, щоб інші могли їх читати. Однак ми не зберігаємо будь-яку інфомацію про ваш IP-адресу чи особу, якщо ви залишаєтесь анонімним.</p>
-                </div>
-                <div class="faq-item">
-                    <h4>Чи може людина дізнатися, хто мені написав?</h4>
-                    <p>Ні. Якщо ви вибрали опцію "залишити записку анонімною", людина ніколи не дізнається, хто її написав. Записки повністю анонімні за замовчуванням.</p>
-                </div>
-                <div class="faq-item">
-                    <h4>Яка максимальна довжина записки?</h4>
-                    <p>Максимум 1000 символів. Це зроблено для того, щоб записки були лаконічними, потужними і легкими для читання.</p>
-                </div>
-                <div class="faq-item">
-                    <h4>Якщо в записці образи чи образ?</h4>
-                    <p>Якщо ви побачите образливу або непристойну записку, поможіть нам. На кожній записці є кнопка "Повідомити про проблему". Ми модеруємо контент та видаляємо нарушення.</p>
-                </div>
-                <div class="faq-item">
-                    <h4>Як це безплатно?</h4>
-                    <p>Проєкт фінансується через пожертви, волонтерство та потенційні партнерства. Це чистий волонтерський проєкт, побудований на вірі, що люди захочуть робити добро.</p>
-                </div>
-                <div class="faq-item">
-                    <h4>Чи можу я видалити мою записку?</h4>
-                    <p>Так. Якщо ви написали записку та змінили думку, напишіть нам на info@unsaid.com і ми можемо допомогти. Просто опишіть записку.</p>
-                </div>
-            </section>
-        </div>
+        <section class="quote-panel">
+            <p>"Some messages are not waiting to be sent. They are waiting to be witnessed."</p>
+        </section>
     </main>
 
-    
-
-    <script src="script.js"></script>
+    <footer class="site-footer">
+        <p>Read the archive from the homepage, then return here for the intent behind the project.</p>
+    </footer>
 </body>
 </html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Unsaid</title>
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+    <nav class="navbar archive-navbar">
+        <div class="nav-container archive-nav-container">
+            <a href="index.html" class="archive-logo" aria-label="Unsaid home">
+                <span class="archive-logo-title">UNSENT</span>
+                <span class="archive-logo-bottom">unsentproject</span>
+            </a>
+
+            <ul class="nav-menu archive-menu">
+                <li><a href="index.html">ARCHIVE</a></li>
+                <li><a href="terms.html">TERMS</a></li>
+                <li><a href="about.html">ABOUT</a></li>
+                <li><a href="news.html">NEWS</a></li>
+                <li><a class="is-active" href="contacts.html">CONTACT</a></li>
+            </ul>
+
+            <a href="submit.html" class="btn-primary archive-submit">SUBMIT</a>
+        </div>
+    </nav>
+
+    <main class="inner-page">
+        <section class="page-hero">
+            <p class="eyebrow">CONTACT THE TEAM</p>
+            <h1>Reach the people behind the archive</h1>
+            <p>Use this page for questions about the project, moderation issues, partnerships, or anything that needs a direct reply from the team.</p>
+        </section>
+
+        <section class="contact-layout">
+            <div class="contact-side">
+                <article class="content-card">
+                    <h2>Email</h2>
+                    <p>team@unsaidproject.example</p>
+                </article>
+                <article class="content-card">
+                    <h2>Moderation</h2>
+                    <p>If you need a message reviewed or removed, send the recipient name and a short excerpt so the team can find it quickly.</p>
+                </article>
+                <article class="content-card">
+                    <h2>Collaborations</h2>
+                    <p>For media, editorial projects, or partnerships, contact the team directly and include a short overview of your idea.</p>
+                </article>
+                <article class="content-card">
+                    <h2>Response time</h2>
+                    <p>Most messages are reviewed within 2 to 5 business days depending on moderation and publishing volume.</p>
+                </article>
+            </div>
+
+            <form class="content-card contact-form">
+                <h2>Message the team</h2>
+                <label>
+                    <span>Your name</span>
+                    <input type="text" name="name" placeholder="How should we address you?">
+                </label>
+                <label>
+                    <span>Email</span>
+                    <input type="email" name="email" placeholder="your@email.com">
+                </label>
+                <label>
+                    <span>Topic</span>
+                    <input type="text" name="topic" placeholder="Moderation, question, partnership...">
+                </label>
+                <label>
+                    <span>Message</span>
+                    <textarea name="message" rows="8" placeholder="Tell the team what you need..."></textarea>
+                </label>
+                <button type="button" class="btn-primary form-submit">Send message</button>
+            </form>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>For publishing a note to the archive, use the separate submit page.</p>
+    </footer>
+</body>
+</html>

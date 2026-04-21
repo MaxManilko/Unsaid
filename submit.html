@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit | Unsaid</title>
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+    <nav class="navbar archive-navbar">
+        <div class="nav-container archive-nav-container">
+            <a href="index.html" class="archive-logo" aria-label="Unsaid home">
+                <span class="archive-logo-title">UNSENT</span>
+                <span class="archive-logo-bottom">unsentproject</span>
+            </a>
+
+            <ul class="nav-menu archive-menu">
+                <li><a href="index.html">ARCHIVE</a></li>
+                <li><a href="terms.html">TERMS</a></li>
+                <li><a href="about.html">ABOUT</a></li>
+                <li><a href="news.html">NEWS</a></li>
+                <li><a href="contacts.html">CONTACT</a></li>
+            </ul>
+
+            <a href="submit.html" class="btn-primary archive-submit is-active-submit">SUBMIT</a>
+        </div>
+    </nav>
+
+    <main class="inner-page">
+        <section class="page-hero">
+            <p class="eyebrow">SUBMIT A MESSAGE</p>
+            <h1>Write what stayed unsaid</h1>
+            <p>Send a new anonymous message to the archive. Keep it honest, concise, and safe for a public reading space.</p>
+        </section>
+
+        <section class="submit-shell">
+            <form class="content-card contact-form submit-form">
+                <h2>New archive message</h2>
+                <label>
+                    <span>To</span>
+                    <input type="text" name="recipient" placeholder="Name or nickname">
+                </label>
+                <label>
+                    <span>Color mood</span>
+                    <input type="text" name="color" placeholder="Blue, lavender, peach...">
+                </label>
+                <label>
+                    <span>Message</span>
+                    <textarea name="message" rows="10" placeholder="Write what stayed unsaid..."></textarea>
+                </label>
+                <button type="button" class="btn-primary form-submit">Submit to archive</button>
+            </form>
+
+            <aside class="contact-side">
+                <article class="content-card">
+                    <h2>Before you publish</h2>
+                    <p>Do not include private contact details, home addresses, or anything that could expose a real person without consent.</p>
+                </article>
+                <article class="content-card">
+                    <h2>Best messages</h2>
+                    <p>The strongest notes are direct and emotionally clear. A few honest lines often land better than a long explanation.</p>
+                </article>
+            </aside>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>If you need help from the team instead of publishing a note, go to the contact page.</p>
+    </footer>
+</body>
+</html>

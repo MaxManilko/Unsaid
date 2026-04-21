@@ -3,104 +3,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unsaid - Залиш свою записку</title>
+    <title>Unsaid Archive</title>
     <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body>
-    <!-- Навігація -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="index.html" class="logo">Unsaid</a>
-            <ul class="nav-menu">
-                <li><a href="index.html">Головна</a></li>
-                <li><a href="create-note.html">Написати</a></li>
-                <li><a href="search.html">Пошук</a></li>
-                <li><a href="random-note.html">Випадкова</a></li>
-                <li><a href="archives.html">Архів</a></li>
-                <li><a href="about.html">Про проєкт</a></li>
+    <nav class="navbar archive-navbar">
+        <div class="nav-container archive-nav-container">
+            <a href="index.html" class="archive-logo" aria-label="Unsaid home">
+                <span class="archive-logo-title">UNSENT</span>
+                <span class="archive-logo-bottom">unsentproject</span>
+            </a>
+
+            <ul class="nav-menu archive-menu">
+                <li><a class="is-active" href="index.html">ARCHIVE</a></li>
+                <li><a href="terms.html">TERMS</a></li>
+                <li><a href="about.html">ABOUT</a></li>
+                <li><a href="news.html">NEWS</a></li>
+                <li><a href="contacts.html">CONTACT</a></li>
             </ul>
+
+            <a href="submit.html" class="btn-primary archive-submit">SUBMIT</a>
         </div>
     </nav>
 
-    <main>
-        <section class="note-form-section">
-            <h2>Share your thoughts</h2>
-            <form id="noteForm">
-                <input 
-                    type="text" 
-                    id="noteAuthor" 
-                    placeholder="For someone special..." 
-                    maxlength="50"
+    <main class="site-main">
+        <section class="archive-hero">
+            <p class="archive-kicker">THE UNSENT</p>
+            <p class="archive-counter">Public Notes  : 14748</p>
+        </section>
+
+        <section class="archive-search-panel" aria-label="Search messages">
+            <label class="archive-search" for="archiveSearch">
+                <span class="archive-search-icon" aria-hidden="true"></span>
+                <input
+                    type="text"
+                    id="archiveSearch"
+                    name="archiveSearch"
+                    placeholder="Search by name or color..."
+                    autocomplete="off"
                 >
-                <textarea 
-                    id="noteText" 
-                    placeholder="Write your note here..." 
-                    rows="5"
-                    required
-                ></textarea>
-                <button type="submit">Send</button>
-            </form>
+            </label>
+            <button class="archive-filter-btn" type="button">Filter</button>
         </section>
 
-        <section class="notes-display-section">
-            <h2>Notes</h2>
-            <div id="notesList" class="notes-container"></div>
+        <section class="archive-grid" aria-label="Featured archive messages">
+            <article class="unsent-card">
+                <header class="unsent-card-header">
+                    <div class="unsent-badge">ABC</div>
+                    <h2>To: Alana</h2>
+                    <div class="unsent-stamp" aria-hidden="true"></div>
+                </header>
+                <div class="unsent-card-body lavender">
+                    <p>I feel bad that my sibling reached out on your birthday last year and not me, but also you're such an asshole. Fuck you. I hope you're okay. Try not to choke on any chicken bones, 'kay?</p>
+                </div>
+            </article>
+
+            <article class="unsent-card">
+                <header class="unsent-card-header">
+                    <div class="unsent-badge">ABC</div>
+                    <h2>To: rivers</h2>
+                    <div class="unsent-stamp" aria-hidden="true"></div>
+                </header>
+                <div class="unsent-card-body sky">
+                    <p>I'm sorry for what I've done. I never meant to hurt you. I wish I could relive the whole thing. I truly did love you and wanted the best for you. I was lost and didn't know what to do. I'm sorry, my love.</p>
+                </div>
+            </article>
+
+            <article class="unsent-card">
+                <header class="unsent-card-header">
+                    <div class="unsent-badge">ABC</div>
+                    <h2>To: Mia</h2>
+                    <div class="unsent-stamp" aria-hidden="true"></div>
+                </header>
+                <div class="unsent-card-body peach">
+                    <p>I still replay the small things. The way you waited, the way you listened, the way you made ordinary afternoons feel important. I never said thank you the right way, so this is me trying now.</p>
+                </div>
+            </article>
+
+            <article class="unsent-card">
+                <header class="unsent-card-header">
+                    <div class="unsent-badge">ABC</div>
+                    <h2>To: Danylo</h2>
+                    <div class="unsent-stamp" aria-hidden="true"></div>
+                </header>
+                <div class="unsent-card-body mint">
+                    <p>I was too proud to admit I missed you. I pretended silence was easier, but it wasn't. If this ever reaches your orbit somehow, I hope you know there was always softness behind the distance.</p>
+                </div>
+            </article>
         </section>
 
-        <section class="list-section">
-            <h2>Recent Activity</h2>
-            <ul class="activity-list">
-                <li>Sarah posted a note 2 hours ago</li>
-                <li>John posted a note 5 hours ago</li>
-                <li>Emma posted a note 1 day ago</li>
-                <li>Mike posted a note 2 days ago</li>
-                <li>Lisa posted a note 3 days ago</li>
-            </ul>
-        </section>
-
-        <section class="table-section">
-            <h2>Contributors Stats</h2>
-            <table border="1px">
-                <tr>
-                    <th>Name</th>
-                    <th>Notes Posted</th>
-                    <th>Last Active</th>
-                </tr>
-                <tr>
-                    <td>Sarah</td>
-                    <td>12</td>
-                    <td>2 hours ago</td>
-                </tr>
-                <tr>
-                    <td>John</td>
-                    <td>8</td>
-                    <td>5 hours ago</td>
-                </tr>
-                <tr>
-                    <td>Emma</td>
-                    <td>15</td>
-                    <td>1 day ago</td>
-                </tr>
-                <tr>
-                    <td>Mike</td>
-                    <td>6</td>
-                    <td>2 days ago</td>
-                </tr>
-            </table>
-        </section>
-
-        <section class="media-section">
-            <img src="assets\Untitled.png" width="500px" height="300px">
-        </br>
-            <iframe width="939" height="528" src="https://www.youtube.com/embed/1iT1z2Cosa4?list=RD1iT1z2Cosa4" title="𝚃𝚅 𝙶𝙸𝚁𝙻 𝙿𝙻𝙰𝚈𝙻𝙸𝚂𝚃" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <section class="info-band">
+            <div class="info-band-card">
+                <p class="eyebrow">WHY PEOPLE STAY</p>
+                <h2>Anonymous notes, an archive-first homepage, and a softer way to say what stayed unsaid.</h2>
+            </div>
+            <div class="stats-column">
+                <div class="stat-card">
+                    <span class="stat-number">14k+</span>
+                    <span class="stat-label">messages published</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">248</span>
+                    <span class="stat-label">new notes this week</span>
+                </div>
+            </div>
         </section>
     </main>
 
-    <footer class="footer">
-        <a href="archives.html">Архів</a>
-        <a href="about.html">Про нас</a>
+    <footer class="site-footer">
+        <p>Unsaid is now archive-first. Browse messages from the main page and move through the rest of the project from the same visual system.</p>
     </footer>
-    
-    <script src="script.js"></script>
 </body>
 </html>
