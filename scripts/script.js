@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // --- 1. ТЕМА (Працює на всіх сторінках) ---
+   
     const themeToggle = document.getElementById('theme-toggle');
     if (themeToggle) {
         function toggleTheme() {
@@ -15,18 +15,17 @@ document.addEventListener('DOMContentLoaded', function() {
             themeToggle.textContent = '☀️';
         } else {
             themeToggle.textContent = '🌙';
-        }
+        } 
         themeToggle.addEventListener('click', toggleTheme);
     }
 
-    // --- 2. ПОШУК ТА ФІЛЬТР (Тільки для index.html) ---
+    // ПОШУК ТА ФІЛЬТР
     const searchInput = document.getElementById('archiveSearch');
     const filterBtn = document.querySelector('.archive-filter-btn');
 
     if (searchInput && filterBtn) {
         function filterCards() {
             const searchTerm = searchInput.value.toLowerCase().trim();
-            // Отримуємо актуальні картки (бо вони тепер вантажаться з БД)
             const currentCards = document.querySelectorAll('.unsent-card');
 
             currentCards.forEach(card => {
@@ -45,10 +44,31 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
     // --- 3. БАЗА ДАНИХ (Відправка і завантаження) ---
     const API_URL = 'http://localhost:3000/api/messages';
 
-    // Відправка повідомлення (Тільки для сторінки submit.html)
+    // Відправка повідомлення
     const submitBtn = document.querySelector('.submit-form .form-submit');
     if (submitBtn) {
         submitBtn.addEventListener('click', async () => {
