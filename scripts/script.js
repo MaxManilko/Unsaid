@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
         themeToggle.addEventListener('click', toggleTheme);
     }
 
-    // ПОШУК ТА ФІЛЬТР
+    // пралакс ефект 
     const parallaxShowcase = document.querySelector('.parallax-showcase');
     if (parallaxShowcase && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         const parallaxItems = parallaxShowcase.querySelectorAll('[data-parallax-speed]');
@@ -67,6 +67,9 @@ document.addEventListener('DOMContentLoaded', function() {
         requestParallaxUpdate();
     }
 
+
+
+    // Фільтрація карток на сторінці архіву
     const searchInput = document.getElementById('archiveSearch');
     const filterBtn = document.querySelector('.archive-filter-btn');
 
