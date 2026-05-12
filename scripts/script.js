@@ -20,6 +20,53 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // ПОШУК ТА ФІЛЬТР
+    const parallaxShowcase = document.querySelector('.parallax-showcase');
+    if (parallaxShowcase && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        const parallaxItems = parallaxShowcase.querySelectorAll('[data-parallax-speed]');
+        let pointerX = 0;
+        let pointerY = 0;
+        let ticking = false;
+
+        parallaxItems.forEach(item => {
+            item.style.setProperty('--layer-speed', item.dataset.parallaxSpeed);
+        });
+
+        function updateParallax() {
+            const rect = parallaxShowcase.getBoundingClientRect();
+            const viewportCenter = window.innerHeight / 2;
+            const blockCenter = rect.top + rect.height / 2;
+            const scrollOffset = (viewportCenter - blockCenter) * 0.18;
+
+            parallaxShowcase.style.setProperty('--parallax-x', `${pointerX * 18}px`);
+            parallaxShowcase.style.setProperty('--parallax-y', `${scrollOffset + pointerY * 16}px`);
+            ticking = false;
+        }
+
+        function requestParallaxUpdate() {
+            if (!ticking) {
+                window.requestAnimationFrame(updateParallax);
+                ticking = true;
+            }
+        }
+
+        parallaxShowcase.addEventListener('pointermove', event => {
+            const rect = parallaxShowcase.getBoundingClientRect();
+            pointerX = ((event.clientX - rect.left) / rect.width - 0.5) * 2;
+            pointerY = ((event.clientY - rect.top) / rect.height - 0.5) * 2;
+            requestParallaxUpdate();
+        });
+
+        parallaxShowcase.addEventListener('pointerleave', () => {
+            pointerX = 0;
+            pointerY = 0;
+            requestParallaxUpdate();
+        });
+
+        window.addEventListener('scroll', requestParallaxUpdate, { passive: true });
+        window.addEventListener('resize', requestParallaxUpdate);
+        requestParallaxUpdate();
+    }
+
     const searchInput = document.getElementById('archiveSearch');
     const filterBtn = document.querySelector('.archive-filter-btn');
 
