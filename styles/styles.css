@@ -71,6 +71,12 @@ textarea {
     font: inherit;
 }
 
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
 .navbar {
     padding: 38px 5vw 20px;
 }
@@ -105,6 +111,14 @@ textarea {
 .archive-menu a.is-active {
     text-decoration: underline;
     text-underline-offset: 8px;
+}
+
+.archive-menu a:focus-visible,
+.btn-primary:focus-visible,
+.btn-secondary:focus-visible,
+.nav-toggle:focus-visible {
+    outline: 3px solid var(--sky);
+    outline-offset: 4px;
 }
 
 .archive-logo {
@@ -169,6 +183,45 @@ textarea {
 .nav-actions {
     display: flex;
     align-items: center;
+}
+
+.nav-toggle {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    padding: 0;
+    border: 2px solid var(--panel-border);
+    border-radius: 12px;
+    background: var(--surface);
+    color: var(--text);
+    cursor: pointer;
+}
+
+.nav-toggle span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    border-radius: 999px;
+    background: currentColor;
+    transition: transform 160ms ease, opacity 160ms ease;
+}
+
+.nav-toggle span + span {
+    margin-top: 5px;
+}
+
+.nav-toggle[aria-expanded="true"] span:first-child {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.nav-toggle[aria-expanded="true"] span:nth-child(2) {
+    opacity: 0;
+}
+
+.nav-toggle[aria-expanded="true"] span:last-child {
+    transform: translateY(-7px) rotate(-45deg);
 }
 
 .archive-submit {
@@ -363,6 +416,25 @@ body.dark-theme .parallax-front {
     rotate: -6deg;
 }
 
+.archive-media-band {
+    max-width: 1230px;
+    margin: 0 auto 56px;
+}
+
+.archive-picture {
+    display: block;
+    overflow: hidden;
+    border: 3px solid var(--text);
+    background: var(--surface-alt);
+    box-shadow: var(--shadow);
+}
+
+.archive-picture img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
 .eyebrow {
     margin: 0 0 12px;
     color: var(--ink-soft);
@@ -439,7 +511,7 @@ body.dark-theme .parallax-front {
 
 .archive-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr));
     gap: 30px;
     max-width: 1230px;
     margin: 0 auto 72px;
@@ -526,7 +598,7 @@ body.dark-theme .parallax-front {
 
 .info-band {
     display: grid;
-    grid-template-columns: 1.5fr 0.85fr;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
     gap: 24px;
     align-items: stretch;
     max-width: 1230px;
@@ -587,7 +659,7 @@ body.dark-theme .parallax-front {
 
 .content-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
     gap: 24px;
     margin-top: 42px;
 }
@@ -644,14 +716,14 @@ body.dark-theme .parallax-front {
 
 .contact-layout {
     display: grid;
-    grid-template-columns: 1.3fr 0.9fr;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr));
     gap: 24px;
     margin-top: 42px;
 }
 
 .submit-shell {
     display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr));
     gap: 24px;
     margin-top: 42px;
 }
@@ -742,14 +814,6 @@ body.dark-theme .parallax-front {
         margin-top: 0;
     }
 
-    .archive-grid,
-    .content-grid,
-    .info-band,
-    .contact-layout,
-    .submit-shell {
-        grid-template-columns: 1fr;
-    }
-
     .parallax-copy {
         width: min(680px, calc(100% - 40px));
     }
@@ -770,10 +834,91 @@ body.dark-theme .parallax-front {
         padding: 24px 18px 14px;
     }
 
+    .nav-container {
+        align-items: center;
+        gap: 12px;
+        justify-content: space-between;
+        position: relative;
+    }
+
+    .archive-logo {
+        width: 124px;
+        min-width: 124px;
+    }
+
+    .archive-logo-title {
+        font-size: 24px;
+    }
+
+    .nav-toggle {
+        display: inline-flex;
+        flex-direction: column;
+        order: 3;
+        flex: 0 0 auto;
+    }
+
+    .nav-actions {
+        display: contents;
+    }
+
+    .btn-secondary {
+        order: 2;
+        width: 46px;
+        height: 46px;
+        margin-left: auto;
+        margin-right: 0;
+    }
+
+    .nav-container .archive-submit {
+        order: 4;
+        flex: 0 0 100%;
+        width: 100%;
+        min-width: 0;
+        margin-top: 0;
+        padding: 14px 18px;
+        font-size: 15px;
+    }
+
+    .nav-menu {
+        display: none;
+        order: 5;
+        flex: 0 0 100%;
+        width: 100%;
+        margin-top: 8px;
+        padding: 8px;
+        border: 2px solid var(--text);
+        background: var(--surface);
+        box-shadow: var(--shadow);
+    }
+
+    .nav-menu.is-open {
+        display: grid;
+        gap: 2px;
+    }
+
+    .archive-menu a {
+        display: block;
+        padding: 14px 16px;
+        font-size: 16px;
+    }
+
+    .archive-menu a.is-active {
+        text-decoration-thickness: 2px;
+        text-underline-offset: 5px;
+    }
+
     .site-main,
     .inner-page,
     .site-footer {
         width: min(100% - 24px, 1640px);
+    }
+
+    .archive-grid,
+    .content-grid,
+    .info-band,
+    .contact-layout,
+    .submit-shell {
+        grid-template-columns: 1fr;
     }
 
     .archive-search-panel {
@@ -798,7 +943,7 @@ body.dark-theme .parallax-front {
 
     .parallax-showcase {
         min-height: 620px;
-        margin-bottom: 36px;
+        margin-bottom: 32px;
     }
 
     .parallax-copy {
@@ -825,6 +970,10 @@ body.dark-theme .parallax-front {
         left: 22px;
         right: auto;
         bottom: 34px;
+    }
+
+    .archive-media-band {
+        margin-bottom: 36px;
     }
 
     .unsent-card-header {
@@ -854,9 +1003,75 @@ body.dark-theme .parallax-front {
         padding: 22px;
     }
 
-    .form-submit,
-    .btn-primary {
+    .form-submit {
         width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        padding: 18px 12px 12px;
+    }
+
+    .nav-container {
+        gap: 8px;
+    }
+
+    .archive-logo {
+        width: 106px;
+        min-width: 106px;
+        border-width: 2px;
+    }
+
+    .archive-logo-title {
+        font-size: 21px;
+    }
+
+    .archive-logo-bottom {
+        font-size: 9px;
+        border-top-width: 1px;
+    }
+
+    .nav-toggle,
+    .btn-secondary {
+        width: 42px;
+        height: 42px;
+        border-radius: 10px;
+    }
+
+    .nav-container .archive-submit {
+        min-width: 78px;
+        padding: 12px 10px;
+        font-size: 13px;
+    }
+
+    .archive-kicker {
+        font-size: 42px;
+    }
+
+    .archive-counter,
+    .page-hero p {
+        font-size: 18px;
+    }
+
+    .parallax-showcase {
+        min-height: 560px;
+    }
+
+    .archive-search-panel,
+    .content-card,
+    .news-card,
+    .quote-panel {
+        border-radius: 8px;
+    }
+
+    .unsent-card-header h2 {
+        font-size: 20px;
+    }
+
+    .unsent-stamp {
+        width: 32px;
+        height: 32px;
     }
 }
 
