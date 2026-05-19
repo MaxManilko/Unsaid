@@ -162,18 +162,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	
     // --- 3. БАЗА ДАНИХ (Відправка і завантаження) ---
-  const API_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
-    ? 'http://localhost:3000/api/messages'
-    : '/api/messages';
+    const API_URL = '/api/messages';
 
+    const recipientInput = document.querySelector('input[name="recipient"]');
+    const colorInput = document.querySelector('input[name="color"]');
+    const messageTextarea = document.querySelector('textarea[name="message"]');
 
     // Відправка повідомлення
     const submitBtn = document.querySelector('.submit-form .form-submit');
-    if (submitBtn) {
+    if (submitBtn && recipientInput && colorInput && messageTextarea) {
         submitBtn.addEventListener('click', async () => {
-            const recipient = document.querySelector('input[name="recipient"]').value;
-            const color = document.querySelector('input[name="color"]').value.toLowerCase();
-            const message = document.querySelector('textarea[name="message"]').value;
+            const recipient = recipientInput.value.trim();
+            const color = colorInput.value.toLowerCase().trim() || 'lavender';
+            const message = messageTextarea.value.trim();
 
             if (!recipient || !message) {
                 alert('Будь ласка, заповніть отримувача та повідомлення.');
@@ -189,8 +190,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 if (response.ok) {
                     alert('Повідомлення успішно додано до архіву!');
-                    window.location.href = 'index.html'; // Перенаправлення на головну
+                    window.location.href = 'index.html';
                 } else {
+                    const errorPayload = await response.json().catch(() => null);
+                    console.error('Server error:', errorPayload);
                     alert('Помилка сервера. Спробуйте ще раз.');
                 }
             } catch (error) {
