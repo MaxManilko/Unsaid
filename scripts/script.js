@@ -162,63 +162,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	
     // --- 3. БАЗА ДАНИХ (Відправка і завантаження) ---
-    const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-    const API_URL = isLocal ? '/api/messages' : null;
-
-    let supabaseClient = null;
-    let supabaseTable = 'messages';
-
-    async function getSupabaseClient() {
-        if (supabaseClient) {
-            return supabaseClient;
-        }
-
-        let config;
-        try {
-            config = await import('./supabase-config.js');
-        } catch (error) {
-            throw new Error('Supabase config file is missing. Copy scripts/supabase-config.example.js to scripts/supabase-config.js and add your Supabase URL and anon key.');
-        }
-
-        const { SUPABASE_URL, SUPABASE_ANON_KEY, SUPABASE_TABLE = 'messages' } = config;
-        if (!SUPABASE_URL || !SUPABASE_ANON_KEY || SUPABASE_URL.includes('your-project') || SUPABASE_ANON_KEY.includes('your-anon-key')) {
-            throw new Error('Supabase is not configured. Update scripts/supabase-config.js with your actual Supabase URL and anon key.');
-        }
-
-        const { createClient } = await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm');
-        supabaseClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-        supabaseTable = SUPABASE_TABLE;
-        return supabaseClient;
-    }
-
-    async function saveMessageToSupabase({ recipient, color, message }) {
-        const supabase = await getSupabaseClient();
-        const { data, error } = await supabase
-            .from(supabaseTable)
-            .insert([{ recipient, color, message }])
-            .select()
-            .single();
-
-        if (error) {
-            throw error;
-        }
-
-        return data;
-    }
-
-    async function loadMessagesFromSupabase() {
-        const supabase = await getSupabaseClient();
-        const { data, error } = await supabase
-            .from(supabaseTable)
-            .select('id, recipient, color, message, created_at')
-            .order('created_at', { ascending: false });
-
-        if (error) {
-            throw error;
-        }
-
-        return data;
-    }
+    const API_URL = '/api/messages';
 
     const recipientInput = document.querySelector('input[name="recipient"]');
     const colorInput = document.querySelector('input[name="color"]');
@@ -238,27 +182,23 @@ document.addEventListener('DOMContentLoaded', function() {
             }
 
             try {
-                if (API_URL) {
-                    const response = await fetch(API_URL, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ recipient, color, message })
-                    });
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ recipient, color, message })
+                });
 
-                    if (!response.ok) {
-                        const errorPayload = await response.json().catch(() => null);
-                        console.error('Server error:', errorPayload);
-                        throw new Error('Server response was not OK');
-                    }
+                if (response.ok) {
+                    alert('Повідомлення успішно додано до архіву!');
+                    window.location.href = 'index.html';
                 } else {
-                    await saveMessageToSupabase({ recipient, color, message });
+                    const errorPayload = await response.json().catch(() => null);
+                    console.error('Server error:', errorPayload);
+                    alert('Помилка сервера. Спробуйте ще раз.');
                 }
-
-                alert('Повідомлення успішно додано до архіву!');
-                window.location.href = 'index.html';
             } catch (error) {
                 console.error('Помилка відправки:', error);
-                alert('Не вдалося надіслати повідомлення. Перевірте конфігурацію Supabase або локальний сервер.');
+                alert('Не вдалося з\'єднатися з сервером. Переконайтеся, що він запущений.');
             }
         });
     }
@@ -268,20 +208,14 @@ document.addEventListener('DOMContentLoaded', function() {
     if (archiveGrid) {
         async function loadMessages() {
             try {
-                let messages;
-
-                if (API_URL) {
-                    const response = await fetch(API_URL);
-                    if (!response.ok) {
-                        const errorPayload = await response.text();
-                        throw new Error(errorPayload || 'API response was not OK');
-                    }
-                    messages = await response.json();
-                } else {
-                    messages = await loadMessagesFromSupabase();
+                const response = await fetch(API_URL);
+                if (!response.ok) {
+                    const errorPayload = await response.text();
+                    throw new Error(errorPayload || 'API response was not OK');
                 }
-
+                const messages = await response.json();
                 
+                archiveGrid.innerHTML = ''; // Очищуємо статичні картки
                 messages.forEach(msg => {
                     const colorClass = ['lavender', 'sky', 'peach', 'mint'].includes(msg.color) ? msg.color : 'lavender';
                     
