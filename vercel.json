@@ -9,19 +9,23 @@
   "routes": [
     {
       "src": "/sitemap.xml",
-      "dest": "sitemap.xml"
+      "dest": "/sitemap.xml"
     },
     {
       "src": "/robots.txt",
-      "dest": "robots.txt"
+      "dest": "/robots.txt"
     },
     {
       "src": "/api/(.*)",
-      "dest": "server.js"
+      "dest": "/server.js"
     },
     {
-      "src": "/(.*)",
-      "dest": "/$1"
+      "src": "^/$",
+      "dest": "/index.html"
+    },
+    {
+      "src": "^/([^\\.]+)$",
+      "dest": "/$1.html"
     }
   ]
 }

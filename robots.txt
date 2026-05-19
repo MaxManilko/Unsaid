@@ -3,4 +3,4 @@ Disallow: /admin/
 Disallow: /login/
 Allow: /
 
-Sitemap: https://html-starter-delta-kohl.vercel.app/sitemap.xml
+Sitemap: /sitemap.xml
