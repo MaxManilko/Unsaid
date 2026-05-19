@@ -3,4 +3,4 @@ Disallow: /admin/
 Disallow: /login/
 Allow: /
 
-Sitemap: /sitemap.xml
+Sitemap: https://unsaid.vercel.app/sitemap.xml
