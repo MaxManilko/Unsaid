@@ -165,30 +165,36 @@ document.addEventListener('DOMContentLoaded', function() {
     const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
     const API_URL = isLocal ? '/api/messages' : null;
 
-    // Supabase config for browser deploys. Replace with your actual values.
-    const SUPABASE_URL = 'https://your-project.supabase.co';
-    const SUPABASE_ANON_KEY = 'your-anon-key';
-    const SUPABASE_TABLE = 'messages';
     let supabaseClient = null;
+    let supabaseTable = 'messages';
 
     async function getSupabaseClient() {
         if (supabaseClient) {
             return supabaseClient;
         }
 
+        let config;
+        try {
+            config = await import('./supabase-config.js');
+        } catch (error) {
+            throw new Error('Supabase config file is missing. Copy scripts/supabase-config.example.js to scripts/supabase-config.js and add your Supabase URL and anon key.');
+        }
+
+        const { SUPABASE_URL, SUPABASE_ANON_KEY, SUPABASE_TABLE = 'messages' } = config;
         if (!SUPABASE_URL || !SUPABASE_ANON_KEY || SUPABASE_URL.includes('your-project') || SUPABASE_ANON_KEY.includes('your-anon-key')) {
-            throw new Error('Supabase is not configured. Update SUPABASE_URL and SUPABASE_ANON_KEY in scripts/script.js');
+            throw new Error('Supabase is not configured. Update scripts/supabase-config.js with your actual Supabase URL and anon key.');
         }
 
         const { createClient } = await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm');
         supabaseClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        supabaseTable = SUPABASE_TABLE;
         return supabaseClient;
     }
 
     async function saveMessageToSupabase({ recipient, color, message }) {
         const supabase = await getSupabaseClient();
         const { data, error } = await supabase
-            .from(SUPABASE_TABLE)
+            .from(supabaseTable)
             .insert([{ recipient, color, message }])
             .select()
             .single();
@@ -203,7 +209,7 @@ document.addEventListener('DOMContentLoaded', function() {
     async function loadMessagesFromSupabase() {
         const supabase = await getSupabaseClient();
         const { data, error } = await supabase
-            .from(SUPABASE_TABLE)
+            .from(supabaseTable)
             .select('id, recipient, color, message, created_at')
             .order('created_at', { ascending: false });
 
