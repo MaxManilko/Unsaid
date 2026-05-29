@@ -118,25 +118,45 @@ document.addEventListener('DOMContentLoaded', function() {
     // Фільтрація карток на сторінці архіву
     const searchInput = document.getElementById('archiveSearch');
     const filterBtn = document.querySelector('.archive-filter-btn');
+    let cards = Array.from(document.querySelectorAll('.unsent-card'));
+    let filterScheduled = false;
+
+    function refreshCardCache() {
+        cards = Array.from(document.querySelectorAll('.unsent-card'));
+    }
 
     if (searchInput && filterBtn) {
-        function filterCards() {
+        function updateCardVisibility() {
             const searchTerm = searchInput.value.toLowerCase().trim();
-            const currentCards = document.querySelectorAll('.unsent-card');
 
-            currentCards.forEach(card => {
-                const name = card.querySelector('h2').textContent.toLowerCase();
-                const colorClass = card.querySelector('.unsent-card-body').className.split(' ')[1] || '';
-                const isVisible = name.includes(searchTerm) || colorClass.includes(searchTerm) || searchTerm === '';
+            if (cards.length === 0) {
+                refreshCardCache();
+            }
 
-                card.style.display = isVisible ? 'block' : 'none';
+            cards.forEach(card => {
+                const nameElement = card.querySelector('h2');
+                const body = card.querySelector('.unsent-card-body');
+                const name = nameElement ? nameElement.textContent.toLowerCase() : '';
+                const colorClass = body ? body.className.split(' ')[1] || '' : '';
+                const isVisible = searchTerm === '' || name.includes(searchTerm) || colorClass.includes(searchTerm);
+
+                card.style.display = isVisible ? '' : 'none';
             });
+
+            filterScheduled = false;
         }
 
-        searchInput.addEventListener('input', filterCards);
+        function scheduleFilter() {
+            if (!filterScheduled) {
+                filterScheduled = true;
+                window.requestAnimationFrame(updateCardVisibility);
+            }
+        }
+
+        searchInput.addEventListener('input', scheduleFilter);
         filterBtn.addEventListener('click', function() {
             searchInput.value = '';
-            filterCards();
+            scheduleFilter();
         });
     }
 
@@ -214,25 +234,47 @@ document.addEventListener('DOMContentLoaded', function() {
                     throw new Error(errorPayload || 'API response was not OK');
                 }
                 const messages = await response.json();
-                
-                archiveGrid.innerHTML = ''; // Очищуємо статичні картки
+
+                const fragment = document.createDocumentFragment();
+
                 messages.forEach(msg => {
                     const colorClass = ['lavender', 'sky', 'peach', 'mint'].includes(msg.color) ? msg.color : 'lavender';
-                    
-                    const cardHTML = `
-                        <article class="unsent-card">
-                            <header class="unsent-card-header">
-                                <div class="unsent-badge">ABC</div>
-                                <h2>To: ${msg.recipient}</h2>
-                                <div class="unsent-stamp" aria-hidden="true"></div>
-                            </header>
-                            <div class="unsent-card-body ${colorClass}">
-                                <p>${msg.message}</p>
-                            </div>
-                        </article>
-                    `;
-                    archiveGrid.insertAdjacentHTML('beforeend', cardHTML);
+                    const article = document.createElement('article');
+                    article.className = 'unsent-card';
+
+                    const header = document.createElement('header');
+                    header.className = 'unsent-card-header';
+
+                    const badge = document.createElement('div');
+                    badge.className = 'unsent-badge';
+                    badge.textContent = 'ABC';
+
+                    const title = document.createElement('h2');
+                    title.textContent = `To: ${msg.recipient}`;
+
+                    const stamp = document.createElement('div');
+                    stamp.className = 'unsent-stamp';
+                    stamp.setAttribute('aria-hidden', 'true');
+
+                    header.appendChild(badge);
+                    header.appendChild(title);
+                    header.appendChild(stamp);
+
+                    const body = document.createElement('div');
+                    body.className = `unsent-card-body ${colorClass}`;
+
+                    const paragraph = document.createElement('p');
+                    paragraph.textContent = msg.message;
+                    body.appendChild(paragraph);
+
+                    article.appendChild(header);
+                    article.appendChild(body);
+                    fragment.appendChild(article);
                 });
+
+                archiveGrid.innerHTML = '';
+                archiveGrid.appendChild(fragment);
+                refreshCardCache();
             } catch (error) {
                 console.error('Помилка завантаження повідомлень:', error);
             }
